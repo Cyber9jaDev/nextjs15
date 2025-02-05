@@ -1,5 +1,6 @@
 "use client";
 
+import { register } from "@/actions/auth";
 import Link from "next/link";
 import { useActionState } from "react";
 

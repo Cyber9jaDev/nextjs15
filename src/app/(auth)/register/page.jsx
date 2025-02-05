@@ -11,7 +11,7 @@ export default function Register() {
     <div className="container w-1/2">
       <h1 className="title">Register</h1>
 
-      <form action="" className="space-y-4">
+      <form action={formAction} className="space-y-4">
         <div>
           <label htmlFor="email">Email</label>
           <input type="text" name="email"/>

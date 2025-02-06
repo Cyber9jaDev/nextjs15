@@ -9,7 +9,7 @@ import { redirect } from "next/navigation";
 // All the functions must be async
 // All the functions must be named with "use server"
 
-export async function register(previousState, formData){
+export async function register(state, formData){
   // await new Promise((resolve) => setTimeout(resolve, 3000));
 
   const validatedFields = RegisterFormSchema.safeParse({

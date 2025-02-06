@@ -51,8 +51,6 @@ export async function register(state, formData){
     password: hashedPassword,
   });
 
-  console.log(results);
-
   // Create a session
   await createSession(results.insertedId);
   console.log(results.insertedId);

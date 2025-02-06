@@ -52,8 +52,7 @@ export async function register(state, formData){
   });
 
   // Create a session
-  await createSession(results.insertedId);
-  console.log(results.insertedId);
+  await createSession(results.insertedId.toString());
 
   redirect("/dashboard")
 }

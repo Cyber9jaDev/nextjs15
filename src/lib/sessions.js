@@ -28,6 +28,8 @@ export async function createSession(userId) {
   const session = await encrypt({ userId, expiresAt });
   const cookieStore = await cookies();
 
+  // Store in cookie store
+  // key is 'session' and the value is session
   cookieStore.set('session', session, {
     httpOnly: true,
     secure: true,

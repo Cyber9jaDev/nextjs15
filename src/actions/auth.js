@@ -4,9 +4,10 @@
 // All the functions must be async
 // All the functions must be named with "use server"
 
-
-
 export async function register(previousState, formData){
+
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  
   const email = formData.get("email");
   const password = formData.get("password");
   const confirmPassword = formData.get("confirmPassword");

@@ -8,7 +8,6 @@ export default function Register() {
   const [ state, formAction, isPending ] = useActionState(register, undefined);
 
   console.log(isPending);
-  console.log(state);
   
   return (
     <div className="container w-1/2">
@@ -29,7 +28,7 @@ export default function Register() {
         </div>
 
         <div className="flex items-end gap-4">
-          <button className="btn-primary">Register</button>
+          <button disabled={isPending} className="btn-primary">{ isPending ? "Loading..." : "Register" }</button>
           <Link href="/" className="text-link">or login here</Link>
         </div>
       </form>

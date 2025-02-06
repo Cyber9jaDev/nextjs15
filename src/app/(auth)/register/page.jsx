@@ -6,6 +6,9 @@ import { useActionState } from "react";
 
 export default function Register() {
   const [ state, formAction, isPending ] = useActionState(register, undefined);
+
+  console.log(isPending);
+  console.log(state);
   
   return (
     <div className="container w-1/2">

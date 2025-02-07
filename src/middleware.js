@@ -15,8 +15,8 @@ export default async function middleware(req) {
   console.log(userId);
 
 
-  if(isProtected){
-    if(!userId) return NextResponse.redirect(new URL("/login", req.nextUrl));
+  if(isProtected && !userId){
+    return NextResponse.redirect(new URL("/login", req.nextUrl));
   }
 
   // if(isPublic && userId){

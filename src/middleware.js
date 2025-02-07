@@ -12,12 +12,12 @@ export default async function middleware(req) {
 
   const user = await getAuthUser();
   const userId = user?.userId;
+  console.log(userId);
 
-  console.log("userId", userId);
 
-  // if(isProtected && !userId){
-  //   return NextResponse.redirect(new URL("/login", req.nextUrl));
-  // }
+  if(isProtected){
+    if(!userId) return NextResponse.redirect(new URL("/login", req.nextUrl));
+  }
 
   // if(isPublic && userId){
   //   return NextResponse.redirect(new URL("/dashboard", req.nextUrl))

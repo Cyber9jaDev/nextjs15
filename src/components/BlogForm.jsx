@@ -9,14 +9,14 @@ export default function BlogForm({ handler }) {
     <form action={action} className="space-y-4">
       <div>
         <label htmlFor="title">Title</label>
-        <input type="text" name="title"/>
+        <input type="text" name="title" defaultValue={state?.title}/>
         {state?.errors?.title && (
           <p className="error">{state.errors.title}</p>
         )}
       </div>
       <div>
         <label htmlFor="content">Content</label>
-        <textarea name="content" rows={6} />
+        <textarea name="content" rows={6} defaultValue={state?.content}/>
         {state?.errors?.content && (
           <p className="error">{state.errors.content}</p>
         )}

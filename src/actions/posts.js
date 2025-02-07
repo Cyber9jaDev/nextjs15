@@ -76,7 +76,6 @@ export async function updatePost(state, formData) {
     return redirect("/");
   }
 
-
   // Update the post in DB
   try {
     await postsCollection.findOneAndUpdate({ _id: post._id }, {

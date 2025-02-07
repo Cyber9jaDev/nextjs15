@@ -2,8 +2,9 @@ import { getCollection } from "@/lib/db";
 import Link from "next/link";
 
 export default async function Home() {
-  const postsCollection = await getCollection("Posts");
+  const postsCollection = await getCollection("posts");
   const posts = await postsCollection.find({}).toArray();
+
   if(posts){
     return (
       <div className="grid grid-cols-2 gap-6">
@@ -24,6 +25,4 @@ export default async function Home() {
     );
   }
   else return <p>Failed to fetch the data from database</p>
-
-  
 }

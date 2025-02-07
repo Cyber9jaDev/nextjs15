@@ -6,7 +6,7 @@ import { ObjectId } from "mongodb";
 import { redirect } from "next/navigation";
 
 export default async function page({ params }) {
-  const { id } = params;
+  const { id } = await params;
   const postsCollection = await getCollection('posts');
   const user = await getAuthUser();
 
@@ -20,8 +20,6 @@ export default async function page({ params }) {
   } else{
     post = null
   }
-
-  
   return (
     <div className="container w-1/2">
       <h1 className="title">Edit your post</h1>

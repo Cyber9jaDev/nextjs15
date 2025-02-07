@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { getCollection } from "@/lib/db";
 import { getAuthUser } from "@/lib/getAuthUser";

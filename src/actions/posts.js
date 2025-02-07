@@ -92,3 +92,30 @@ export async function updatePost(state, formData) {
 
   redirect('/dashboard');
 }
+
+export async function deletePost(formData) {
+  // Check if user is signed in
+  const user = await getAuthUser();
+  if (!user) return redirect("/");
+
+  // Validate form fields
+
+  const postId = formData.get("postId");
+
+  // Find post
+  const postsCollection = await getCollection('posts');
+  const post = await postsCollection.findOne({
+    _id: ObjectId.createFromHexString(postId)
+  });
+
+  // Check if user owns the post
+  if (post.userId.toHexString() !== user.userId) {
+    return redirect("/");
+  }
+
+  // Delete the post in DB
+  postsCollection.findOneAndDelete({ _id: post._id })
+
+  redirect('/dashboard');
+}
+

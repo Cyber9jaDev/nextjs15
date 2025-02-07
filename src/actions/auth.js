@@ -86,9 +86,9 @@ export async function login (state, formData){
   const matchedPassword = await bcrypt.compare(password, existingUser.password)
   if (!matchedPassword) return { errors: { email: "Invalid credentials." } };
   
-    // Create a session
-    await createSession(existingUser._id.toString())
+  // Create a session
+  await createSession(existingUser._id.toString())
 
-    // Redirect
-    redirect('/dashboard')
+  // Redirect
+  redirect('/dashboard')
 }

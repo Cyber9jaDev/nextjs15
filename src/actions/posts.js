@@ -1,8 +1,10 @@
 "use server"
 
+import { getCollection } from "@/lib/db";
 import { getAuthUser } from "@/lib/getAuthUser";
 import { BlogPostSchema } from "@/lib/rules";
-import { redirect } from "next/dist/server/api-utils";
+import { ObjectId } from "mongodb";
+import { redirect } from "next/navigation";
 
 export async function createPost(state, formData) {
   // Check if user is signed in
@@ -24,9 +26,21 @@ export async function createPost(state, formData) {
     };
   }
 
-  console.log(title, content);
+  // Save post to db
+  try {
+    const postsCollection = await getCollection('posts');
+    const post = {
+      title: validatedFields.data.title,
+      content: validatedFields.data.content,
+      userId: ObjectId.createFromHexString(user.userId)
+    }
+    await postsCollection.insertOne(post)
+  } catch (error) {
+    return {
+      errors: { title: error.message }
+    }
+  }
 
-  // 
-
+  redirect('/dashboard');
 
 }

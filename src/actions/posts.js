@@ -4,6 +4,7 @@ import { getCollection } from "@/lib/db";
 import { getAuthUser } from "@/lib/getAuthUser";
 import { BlogPostSchema } from "@/lib/rules";
 import { ObjectId } from "mongodb";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function createPost(state, formData) {
@@ -71,7 +72,7 @@ export async function updatePost(state, formData) {
   });
 
   // Check if user owns the post
-  if (post.userId.toHexString() !== user.userId) {
+  if (post?.userId.toHexString() !== user.userId) {
     return redirect("/");
   }
 
@@ -109,13 +110,13 @@ export async function deletePost(formData) {
   });
 
   // Check if user owns the post
-  if (post.userId.toHexString() !== user.userId) {
+  if (post?.userId.toHexString() !== user.userId) {
     return redirect("/");
   }
 
   // Delete the post in DB
-  postsCollection.findOneAndDelete({ _id: post._id })
+  await postsCollection.findOneAndDelete({ _id: post._id })
 
-  redirect('/dashboard');
+  revalidatePath('/dashboard');
 }
 

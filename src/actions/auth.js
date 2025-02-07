@@ -4,6 +4,7 @@ import { getCollection } from "@/lib/db";
 import { LoginFormSchema, RegisterFormSchema } from "@/lib/rules";
 import { createSession } from "@/lib/sessions";
 import bcrypt from "bcryptjs";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 // All the functions must run on the server side
@@ -91,4 +92,10 @@ export async function login (state, formData){
 
   // Redirect
   redirect('/dashboard')
+}
+
+export async function logout (){
+  const cookieStore = await cookies();
+  cookieStore.delete("session");
+  redirect("/");
 }

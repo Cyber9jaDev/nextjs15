@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { getAuthUser } from "./lib/getAuthUser";
+import getAuthUser from "./lib/getAuthUser";
+// import { getAuthUser } from "./lib/getAuthUser";
 
 const protectedRoutes = ["/dashboard", "posts/create"];
 const publicRoutes = ["/login", "/register"];

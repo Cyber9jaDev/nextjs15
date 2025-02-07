@@ -1,4 +1,4 @@
-import { getAuthUser } from "@/lib/getAuthUser";
+import getAuthUser from "@/lib/getAuthUser";
 import NavLink from "./NavLink";
 import { logout } from "@/actions/auth";
 

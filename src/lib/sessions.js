@@ -17,6 +17,7 @@ export async function decrypt(session) {
     const { payload } = await jwtVerify(session, encodedKey, {
       algorithms: ["HS256"],
     });
+    console.log(payload);
     return payload;
   } catch (error) {
     console.log("Failed to verify session");

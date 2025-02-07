@@ -1,6 +1,6 @@
 import { deletePost } from "@/actions/posts";
 import { getCollection } from "@/lib/db";
-import { getAuthUser } from "@/lib/getAuthUser";
+import getAuthUser from "@/lib/getAuthUser";
 import { ObjectId } from "mongodb";
 import Link from "next/link";
 
